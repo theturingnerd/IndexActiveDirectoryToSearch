@@ -11,10 +11,7 @@ namespace IndexActiveDirectoryToSearch.Services
     public static class AzureSearchIndexService
     {
 
-        public static void Test()
-        {
-          
-        }
+     
         public static SearchServiceClient CreateSearchServiceClient()
         {
             string adminApiKey = System.Configuration.ConfigurationManager.AppSettings["Azure.Search.APIKey.Admin"];

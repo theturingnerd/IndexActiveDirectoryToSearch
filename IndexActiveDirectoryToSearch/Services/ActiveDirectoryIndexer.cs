@@ -29,7 +29,7 @@ namespace IndexActiveDirectoryToSearch.Services
             Console.WriteLine("Fetching Mail enabled users from AD...");
             var client = Services.AzureSearchIndexService.CreateSearchServiceClient();
             Frameworks.AzureSearch.AzureSearchHelper.CreateIndex<Frameworks.ActiveDirectory.ADUserDetail>(client, _indexName, "ObjectGUID", 
-                new List<string>() { "ManagerName" });
+                new List<string>() { "ManagerName", "ThumbnailPhoto" });
             ISearchIndexClient indexClient = client.Indexes.GetClient(_indexName);
 
             var adhelper = new Frameworks.ActiveDirectory.ActiveDirectoryHelper();
@@ -56,7 +56,8 @@ namespace IndexActiveDirectoryToSearch.Services
 
             Console.WriteLine("Job Complete...!");
             Console.WriteLine("Will resume in 24 hours!");
-            _timer.Interval = 86400000;
+            _timer.Interval = Double.Parse(System.Configuration.ConfigurationManager.AppSettings["RefreshInterval"]);
+            ;
             _timer.Start();
 
 

@@ -77,6 +77,8 @@ namespace IndexActiveDirectoryToSearch.Frameworks.ActiveDirectory
         public const String MSEXCHRECIPIENTDISPLAYTYPE = "msExchRecipientDisplayType";
         public const String MSEXCHMAILBOXGUID = "msExchMailboxGuid";
         public const String NTSECURITYDESCRIPTOR = "nTSecurityDescriptor";
- 
+        public const String WORKPHONE = "telephoneNumber";
+        public const String THUMBNAIL = "thumbnailPhoto";
+       
     }
 }

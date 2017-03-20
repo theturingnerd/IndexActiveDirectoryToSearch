@@ -38,7 +38,7 @@ namespace IndexActiveDirectoryToSearch.Frameworks.AzureSearch
                     field.IsSearchable = true;
                 }
             }
-            //serviceClient.Indexes.Delete(index);
+            serviceClient.Indexes.Delete(index);
             serviceClient.Indexes.Create(definition);
         }
     }

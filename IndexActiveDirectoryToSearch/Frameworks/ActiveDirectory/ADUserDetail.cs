@@ -30,6 +30,18 @@ namespace IndexActiveDirectoryToSearch.Frameworks.ActiveDirectory
         private String _managerName;
         private String _department;
         private String _objectGUID;
+        private String _workPhone;
+        private String _thumbnailPhoto;
+
+
+        public String ThumbnailPhoto
+        {
+            get { return _thumbnailPhoto; }
+        }
+        public String WorkPhone
+        {
+            get { return _workPhone; }
+        }
 
         public String ObjectGUID
         {
@@ -191,8 +203,15 @@ namespace IndexActiveDirectoryToSearch.Frameworks.ActiveDirectory
             _emailAddress = GetProperty(directoryUser, ADProperties.EMAILADDRESS);
             _title = GetProperty(directoryUser, ADProperties.TITLE);
             _manager = GetProperty(directoryUser, ADProperties.MANAGER);
+            _workPhone = GetProperty(directoryUser, ADProperties.WORKPHONE);
             _objectGUID = (new Guid((System.Byte[])GetSpecialProperty(directoryUser, ADProperties.OBJECTGUID))).ToString();
 
+            var image = GetSpecialProperty(directoryUser, ADProperties.THUMBNAIL);
+            if (image.GetType() == typeof(System.Byte[]))
+            { 
+                String base64Image = Convert.ToBase64String((System.Byte[])image);
+                _thumbnailPhoto = base64Image;
+            }
             if (!String.IsNullOrEmpty(_manager))
             {
                 String[] managerArray = _manager.Split(',');
