@@ -15,6 +15,13 @@ namespace IndexActiveDirectoryToSearch
         //test
         static void Main(string[] args)
         {
+            if (!System.Diagnostics.EventLog.SourceExists("ActiveDirectoryIndexer"))
+            {
+                System.Diagnostics.EventLog.CreateEventSource("ActiveDirectoryIndexer", "Application");
+            }
+
+
+
             HostFactory.Run(x =>                                 
             {
                 x.Service<Services.ActiveDirectoryIndexer>(s =>                       

@@ -79,6 +79,7 @@
     <Compile Include="Frameworks\ActiveDirectory\ADProperties.cs" />
     <Compile Include="Frameworks\ActiveDirectory\ADUserDetail.cs" />
     <Compile Include="Frameworks\AzureSearch\AzureSearchHelper.cs" />
+    <Compile Include="Frameworks\Loggers\Logger.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ActiveDirectoryIndexer.cs" />
